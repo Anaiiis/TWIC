@@ -22,8 +22,7 @@ public class VilleDAOImpl implements VilleDAO {
 
 	public List<Ville> findAllVilles() {
 		
-        String sql = "SELECT Code_commune_INSEE, Nom_commune, Code_postal,"
-        		+ "Libelle_acheminement, Ligne_5, Latitude, Longitude FROM ville_france;";
+        String sql = "SELECT * FROM ville_france;";
         List<Ville> villes = new ArrayList<>();
         
         try (Connection co = daoFactory.getConnection()) {
