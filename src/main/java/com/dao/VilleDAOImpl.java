@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +19,8 @@ import com.dto.Ville;
 @Repository
 public class VilleDAOImpl implements VilleDAO {
 
-	private static final Logger LOG = LogManager.getLogger(VilleDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(VilleDAOImpl.class);
+	private static final String ERROR_MESSAGE = "Error : {}";
 
 	@Autowired
 	private DaoFactory daoFactory;
@@ -46,7 +47,7 @@ public class VilleDAOImpl implements VilleDAO {
 			}
 
 		} catch (SQLException e) {
-			LOG.fatal(e);
+			logger.error(ERROR_MESSAGE, e.getMessage());
 		}
 
 		return villes;
@@ -76,7 +77,7 @@ public class VilleDAOImpl implements VilleDAO {
 			}
 
 		} catch (SQLException e) {
-			LOG.fatal(e);
+			logger.error(ERROR_MESSAGE, e.getMessage());
 		}
 
 		return ville;
@@ -104,7 +105,7 @@ public class VilleDAOImpl implements VilleDAO {
 			}
 
 		} catch (SQLException e) {
-			LOG.fatal(e);
+			logger.error(ERROR_MESSAGE, e.getMessage());
 		}
 
 		return ville;
@@ -132,7 +133,7 @@ public class VilleDAOImpl implements VilleDAO {
 			}
 
 		} catch (SQLException e) {
-			LOG.fatal(e);
+			logger.error(ERROR_MESSAGE, e.getMessage());
 		}
 
 		return ville;
@@ -153,7 +154,7 @@ public class VilleDAOImpl implements VilleDAO {
 			}
 
 		} catch (SQLException e) {
-			LOG.fatal(e);
+			logger.error(ERROR_MESSAGE, e.getMessage());
 		}
 	}
 

@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +16,7 @@ public class DaoFactory {
 	private String username;
 	private String password;
 	private static final ResourceBundle DB_CONF = ResourceBundle.getBundle("DB");
-	private static final Logger LOG = LogManager.getLogger(DaoFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(DaoFactory.class);
 
 	DaoFactory() {
 		this.url = DB_CONF.getString("URL_DB");
@@ -41,7 +41,7 @@ public class DaoFactory {
 		try {
 			connection = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
-			LOG.fatal(e);
+			logger.error("Error : {}", e.getMessage());
 		}
 		return connection;
 	}
