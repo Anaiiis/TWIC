@@ -61,42 +61,4 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<!-- <plugins>
-	        <plugin>
-	            <artifactId>maven-resources-plugin</artifactId>
-	            <executions>
-	                <execution>
-	                    <id>copy-resources</id>
-	                    <phase>compile</phase>
-	                    <goals>
-	                        <goal>copy-resources</goal>
-	                    </goals>
-	                    <configuration>
-	                        <outputDirectory>${basedir}/target/conf</outputDirectory>
-	                        <resources>
-	                            <resource>
-	                                <directory>src/main/resources</directory>
-	                                <filtering>true</filtering>
-	                            </resource>
-	                            <resource>
-	            				<directory>src/main/resources</directory>
-	           						<excludes>
-	                					<exclude>*.properties</exclude>
-	                					<exclude>*.xml</exclude>
-	            					</excludes>
-	            					<filtering>false</filtering>
-	        					</resource>
-	                        </resources>
-	                    </configuration>
-	                </execution>
-	            </executions>
-	        </plugin>
-	        <plugin>
-	        	<groupId>org.springframework.boot</groupId>
-	        	<artifactId>spring-boot-maven-plugin</artifactId>
-	      </plugin>
-	    </plugins> -->
-	</build>
-
 </project>

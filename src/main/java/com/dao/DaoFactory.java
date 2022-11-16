@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,41 +16,32 @@ public class DaoFactory {
 	private String username;
 	private String password;
 	private static final ResourceBundle DB_CONF = ResourceBundle.getBundle("DB");
+	private static final Logger LOG = LogManager.getLogger(DaoFactory.class);
 
 	DaoFactory() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
 		this.url = DB_CONF.getString("URL_DB");
 		this.username = DB_CONF.getString("USERNAME_DB");
 		this.password = DB_CONF.getString("PASSWORD_DB");
 	}
 
 	/**
-	 * Create an instance of DaoFactory to handle SQL queries
-	 * @return A DaoFactory instance
+	 * Crée une instance de DaoFactory pour traiter les requêtes SQL
+	 * @return Une instance de DaoFactory
 	 */
 	public static DaoFactory getInstance() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
 		return new DaoFactory();
 	}
 
 	/**
-	 * Create a connection to the database
-	 * @return The new connection
+	 * Crée une connexion à la base de données
+	 * @return La nouvelle connexion
 	 */
 	public Connection getConnection() {
 		Connection connection = null;
 		try {
 			connection = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOG.fatal(e);
 		}
 		return connection;
 	}
